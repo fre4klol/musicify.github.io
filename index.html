@@ -7,11 +7,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         #player {
-            margin: 50px auto;
-            width: 300px;
+            width: 400px;
             padding: 20px;
             border: 2px solid #ccc;
             border-radius: 10px;
@@ -21,22 +23,61 @@
             margin-top: 20px;
         }
         #photo {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 20px auto;
-            object-fit: cover;
-            border: 2px solid #ccc;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        #songList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        #songList li {
+            margin-bottom: 5px;
+        }
+        #songList li a {
+            text-decoration: none;
+            color: #333;
         }
     </style>
 </head>
 <body>
     <div id="player">
         <h2>Song Player</h2>
-        <img id="photo" src="bakkal.jpg" alt="sanatci 😍">
-        <audio controls>
-            <source src="song.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+        <div id="sidebar">
+            <h3>Song List</h3>
+            <ul id="songList">
+                <li><a href="#" data-song="song1.mp3" data-image="image1.jpg">Song 1</a></li>
+                <li><a href="#" data-song="song2.mp3" data-image="image2.jpg">Song 2</a></li>
+                <li><a href="#" data-song="song3.mp3" data-image="image3.jpg">Song 3</a></li>
+                <!-- Add more songs as needed -->
+            </ul>
+        </div>
+        <div id="main">
+            <img id="photo" src="" alt="Artist Photo">
+            <audio controls>
+                <source id="audioSource" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
     </div>
+    <script>
+        document.getElementById("songList").addEventListener("click", function(event) {
+            if(event.target.tagName === "A") {
+                event.preventDefault();
+                var audioSource = document.getElementById("audioSource");
+                var imageSource = document.getElementById("photo");
+                var songURL = event.target.dataset.song;
+                var imageURL = event.target.dataset.image;
+                
+                audioSource.src = songURL;
+                audioSource.parentNode.load();
+                audioSource.parentNode.play();
+                
+                imageSource.src = imageURL;
+            }
+        });
+    </script>
 </body>
 </html>
