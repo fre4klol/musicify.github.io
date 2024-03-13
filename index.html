@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #player {
+            margin: 50px auto;
+            width: 300px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+        #photo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px auto;
+            object-fit: cover;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="player">
+        <h2>Song Player</h2>
+        <img id="photo" src="bakkal.jpg" alt="sanatci 😍">
+        <audio controls>
+            <source src="song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</body>
+</html>
